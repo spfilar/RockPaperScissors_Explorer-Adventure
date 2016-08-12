@@ -33,7 +33,7 @@ public class AbrahamLincoln extends Player {
 
 	@Override
 	public void move() {
-		numMoves = (int)((Math.random() * 3) + 1);
+		numMoves = (int)((Math.random() * 5) + 1);
 		
 		switch (numMoves) {
 			case 1: move = "rock";
@@ -41,7 +41,11 @@ public class AbrahamLincoln extends Player {
 			case 2: move = "paper";
 				break;
 			case 3: move = "scissors";
-				break;				
+				break;	
+			case 4: move = "lizard";
+				break;
+			case 5: move = "spock";
+				break;
 		}	
 	}
 

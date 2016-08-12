@@ -1,19 +1,18 @@
 package com.rockpaperscissors;
 
-public class TheodoreRoosevelt extends Player {
-
+public class GroverCleveland extends Player {
+	
 	int numMoves = 0;
 	String move = null;
 	
-	public TheodoreRoosevelt() {
+	public GroverCleveland() {
 	}
-	
-	public TheodoreRoosevelt(int numMoves, String move) {
+
+	public GroverCleveland(int numMoves, String move) {
 		super();
 		this.numMoves = numMoves;
 		this.move = move;
 	}
-
 
 	public int getNumMoves() {
 		return numMoves;
@@ -30,7 +29,7 @@ public class TheodoreRoosevelt extends Player {
 	public void setMove(String move) {
 		this.move = move;
 	}
-
+	
 	@Override
 	public void move() {
 		numMoves = (int)((Math.random() * 5) + 1);
@@ -41,12 +40,12 @@ public class TheodoreRoosevelt extends Player {
 			case 2: move = "paper";
 				break;
 			case 3: move = "scissors";
-				break;				
+				break;	
 			case 4: move = "lizard";
 				break;
 			case 5: move = "spock";
 				break;
-		}
+		}	
 	}
 
 }

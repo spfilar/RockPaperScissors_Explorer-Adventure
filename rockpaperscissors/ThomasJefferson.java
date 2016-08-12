@@ -1,19 +1,18 @@
 package com.rockpaperscissors;
 
-public class TheodoreRoosevelt extends Player {
+public class ThomasJefferson extends Player {
 
 	int numMoves = 0;
 	String move = null;
 	
-	public TheodoreRoosevelt() {
+	public ThomasJefferson() {
 	}
-	
-	public TheodoreRoosevelt(int numMoves, String move) {
+
+	public ThomasJefferson(int numMoves, String move) {
 		super();
 		this.numMoves = numMoves;
 		this.move = move;
 	}
-
 
 	public int getNumMoves() {
 		return numMoves;
@@ -27,7 +26,7 @@ public class TheodoreRoosevelt extends Player {
 		return move;
 	}
 
-	public void setMove(String move) {
+	public void setOMove(String move) {
 		this.move = move;
 	}
 
@@ -41,12 +40,11 @@ public class TheodoreRoosevelt extends Player {
 			case 2: move = "paper";
 				break;
 			case 3: move = "scissors";
-				break;				
+				break;
 			case 4: move = "lizard";
 				break;
 			case 5: move = "spock";
 				break;
-		}
+		}	
 	}
-
 }
