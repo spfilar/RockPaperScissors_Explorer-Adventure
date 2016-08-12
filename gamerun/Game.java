@@ -27,8 +27,9 @@ public class Game {
 	public void runGame() {
 		
 		System.out.println(intro);
+		
 		this.userName();
-
+		
 		this.oppName();
 		
 		System.out.println("\nYour name is: " + user
@@ -45,7 +46,13 @@ public class Game {
 			} else { runGame(); }
 		}	
 	}
-			
+	
+	public Game(String user, String opponent) {
+		this.user = user;
+		this.opponent = opponent;
+	}
+	
+	
 	public void userName() {
 		
 		User userName = new User();
@@ -141,9 +148,12 @@ public class Game {
 	
 	public void calculations() {
 		
+		System.out.println("\n" + user + " used " + userMove);
+		System.out.println(opponent + " used " + oppMove);
+		
 		if (userMove.equals(oppMove)) {
 			ties++;
-			System.out.println("\nYou tie!");
+			System.out.println("You tie!");
 			
 		} else if ((userMove.equalsIgnoreCase("rock") && (oppMove.equalsIgnoreCase("scissors") || oppMove.equalsIgnoreCase("lizard"))) ||
 				(userMove.equalsIgnoreCase("scissors") && (oppMove.equalsIgnoreCase("paper") || oppMove.equalsIgnoreCase("lizard"))) ||
@@ -151,7 +161,8 @@ public class Game {
 				(userMove.equalsIgnoreCase("lizard") && (oppMove.equalsIgnoreCase("spock") || oppMove.equalsIgnoreCase("paper"))) ||
 				(userMove.equalsIgnoreCase("spock") && (oppMove.equalsIgnoreCase("scissors") || oppMove.equalsIgnoreCase("rock")))) {
 			wins++;
-			System.out.println("\nYou win!");
+			System.out.println(userMove + " beats " + oppMove);
+			System.out.println("You win!");
 			
 		} else if ((oppMove.equalsIgnoreCase("rock") && (userMove.equalsIgnoreCase("scissors") || userMove.equalsIgnoreCase("lizard"))) ||
 				(oppMove.equalsIgnoreCase("scissors") && (userMove.equalsIgnoreCase("paper") || userMove.equalsIgnoreCase("lizard"))) ||
@@ -159,11 +170,10 @@ public class Game {
 				(oppMove.equalsIgnoreCase("lizard") && (userMove.equalsIgnoreCase("spock") || userMove.equalsIgnoreCase("paper"))) ||
 				(oppMove.equalsIgnoreCase("spock") && (userMove.equalsIgnoreCase("scissors") || userMove.equalsIgnoreCase("rock")))) {
 			losses++;
-			System.out.println("\nYou lost!");
+			System.out.println(oppMove + " beats " + userMove);
+			System.out.println("You lost!");
 		}
 		
-		System.out.println(user + " used " + userMove);
-		System.out.println(opponent + " used " + oppMove);
 		System.out.println("\nGame totals:"
 				+ "\nwins: " + wins + "\nlosses: " + losses + "\nties: " + ties);	
 	}
