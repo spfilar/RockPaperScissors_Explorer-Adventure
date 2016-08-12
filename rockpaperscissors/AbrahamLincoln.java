@@ -14,7 +14,6 @@ public class AbrahamLincoln extends Player {
 		this.move = move;
 	}
 
-	
 	public int getNumMoves() {
 		return numMoves;
 	}

@@ -6,57 +6,27 @@ import com.rockpaperscissors.*;
 
 public class Game {
 	
-	public static void main(String[] args) {
-		
-		Game newGame = new Game();
-		newGame.runGame();
-	}
-	
 	Scanner rps = new Scanner(System.in);
-	private int intro = 0;
-	private int needOpponent = 1;
 	private int wins = 0;
 	private int losses = 0;
 	private int ties = 0;
-	private String[] gameStory = new String[2];
+	private String intro = null;
+	private String needOpponent = null;
 	private String userMove = null;
 	private String user = null;
 	private String opponent = null;
 	private String oppMove = null;
 	private boolean dontRestart = true;
 	
-	public Game() {
-		gameStory[intro] = "\nTime to play Rock, Paper, Scissors!\n"
-				+ "Rules of the game:\n"
-				+ "You will face an opponent of your choosing.\n"
-				+ "You each get one throw: rock, paper, scissors, lizard, or spock.\n"
-				+ "rock: crushes scissors & crushes lizard\n"
-				+ "scissors: cuts paper & decapitates lizard\n"
-				+ "paper: covers rock & disproves spock\n"
-				+ "lizard: eats paper & poisons spock\n"
-				+ "spock: smashes scissors & vaporizes rock\n";
-		gameStory[needOpponent] = "Please choose your opponent:\n"
-				+ "'W' for George Washington\n"
-				+ "'L' for Abraham Lincoln\n"
-				+ "'T' for Theodore Roosevelt\n"
-				+ "'J' for Andrew Jackson\n"
-				+ "'F' for Franklin Roosevelt\n"
-				+ "'S' for George H. W. Bush\n"
-				+ "'C' for Grover Cleveland\n"
-				+ "'H' for Herbert Hoover\n"
-				+ "'G' for James Garfield\n"
-				+ "'P' for Thomas Jefferson";
-	}
-	
-	public Game(String user, String opponent) {
-		super();
-		this.user = user;
-		this.opponent = opponent;
+	public static void main(String[] args) {
+		
+		Game newGame = new Game();
+		newGame.runGame();
 	}
 
 	public void runGame() {
 		
-		System.out.println(gameStory[0]);
+		System.out.println(intro);
 		this.userName();
 
 		this.oppName();
@@ -86,10 +56,10 @@ public class Game {
 	public void oppName() {
 		
 		do {
-			System.out.println(gameStory[1]);
+			System.out.println(needOpponent);
 			opponent = rps.nextLine();
 			
-		} while (!Validation.validateOppName(opponent));
+		} while (!(Validation.validateOppName(opponent)));
 		
 		switch (opponent) {
 		case "W": opponent = "George Washington";
@@ -120,8 +90,7 @@ public class Game {
 		User uMove = new User();
 		uMove.move();
 		userMove = uMove.getUserMove();
-		dontRestart = uMove.isDontRestart();
-		
+		dontRestart = uMove.isDontRestart();	
 	}
 	
 	public void oppMove() {
@@ -174,7 +143,7 @@ public class Game {
 		
 		if (userMove.equals(oppMove)) {
 			ties++;
-			System.out.println("You tie!");
+			System.out.println("\nYou tie!");
 			
 		} else if ((userMove.equalsIgnoreCase("rock") && (oppMove.equalsIgnoreCase("scissors") || oppMove.equalsIgnoreCase("lizard"))) ||
 				(userMove.equalsIgnoreCase("scissors") && (oppMove.equalsIgnoreCase("paper") || oppMove.equalsIgnoreCase("lizard"))) ||
@@ -182,7 +151,7 @@ public class Game {
 				(userMove.equalsIgnoreCase("lizard") && (oppMove.equalsIgnoreCase("spock") || oppMove.equalsIgnoreCase("paper"))) ||
 				(userMove.equalsIgnoreCase("spock") && (oppMove.equalsIgnoreCase("scissors") || oppMove.equalsIgnoreCase("rock")))) {
 			wins++;
-			System.out.println("You win!");
+			System.out.println("\nYou win!");
 			
 		} else if ((oppMove.equalsIgnoreCase("rock") && (userMove.equalsIgnoreCase("scissors") || userMove.equalsIgnoreCase("lizard"))) ||
 				(oppMove.equalsIgnoreCase("scissors") && (userMove.equalsIgnoreCase("paper") || userMove.equalsIgnoreCase("lizard"))) ||
@@ -190,11 +159,35 @@ public class Game {
 				(oppMove.equalsIgnoreCase("lizard") && (userMove.equalsIgnoreCase("spock") || userMove.equalsIgnoreCase("paper"))) ||
 				(oppMove.equalsIgnoreCase("spock") && (userMove.equalsIgnoreCase("scissors") || userMove.equalsIgnoreCase("rock")))) {
 			losses++;
-			System.out.println("You lost!");
+			System.out.println("\nYou lost!");
 		}
-		System.out.println("\n" + user + "'s move is " + userMove);
-		System.out.println(opponent + "'s move is " + oppMove);
-		System.out.println("\nGame totals:\nwins: " + wins + "\nlosses: " + losses + "\nties: " + ties);
 		
+		System.out.println(user + " used " + userMove);
+		System.out.println(opponent + " used " + oppMove);
+		System.out.println("\nGame totals:"
+				+ "\nwins: " + wins + "\nlosses: " + losses + "\nties: " + ties);	
+	}
+	
+	public Game() {
+		intro = "\nTime to play Rock, Paper, Scissors, Lizard, Spock!"
+				+ "\nRules of the game:"
+				+ "\nYou will face an opponent of your choosing."
+				+ "\nYou each get one throw: rock, paper, scissors, lizard, or spock."
+				+ "\nrock: crushes scissors & crushes lizard"
+				+ "\nscissors: cuts paper & decapitates lizard"
+				+ "\npaper: covers rock & disproves spock"
+				+ "\nlizard: eats paper & poisons spock"
+				+ "\nspock: smashes scissors & vaporizes rock";
+		needOpponent = "\nPlease choose your opponent:"
+				+ "\n'W' for George Washington"
+				+ "\n'L' for Abraham Lincoln"
+				+ "\n'T' for Theodore Roosevelt"
+				+ "\n'J' for Andrew Jackson"
+				+ "\n'F' for Franklin Roosevelt"
+				+ "\n'S' for George H. W. Bush"
+				+ "\n'C' for Grover Cleveland"
+				+ "\n'H' for Herbert Hoover"
+				+ "\n'G' for James Garfield"
+				+ "\n'P' for Thomas Jefferson";
 	}
 }

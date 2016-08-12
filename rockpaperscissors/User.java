@@ -44,7 +44,7 @@ public class User extends Player {
 	}
 	
 	public void uName() {
-		System.out.println("Player, what's your name?");
+		System.out.println("\nPlayer, what's your name?");
 		name = rps.nextLine();
 	}
 	

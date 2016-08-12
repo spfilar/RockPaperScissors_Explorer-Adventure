@@ -27,9 +27,11 @@ public class Validation {
 		case "lizard":
 		case "spock":
 			return true;
+			
 		case "r":
 			Game newGame = new Game();
 			newGame.runGame();
+			
 		default:
 			System.out.println("Invalid move type");
 			return false;
